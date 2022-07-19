@@ -141,10 +141,14 @@ class mealBox extends StatelessWidget {
             innerText,
             style: TextStyle(color: Colors.white),
           ),
-          Icon(
-            FeatherIcons.plusSquare,
-            color: Colors.white,
-            size: 40.0,
+          TextButton(
+            style: ButtonStyle(overlayColor: MyColor()),
+            onPressed: () {},
+            child: Icon(
+              FeatherIcons.plusSquare,
+              color: Colors.white,
+              size: 40.0,
+            ),
           )
         ],
       ),
@@ -154,5 +158,20 @@ class mealBox extends StatelessWidget {
       ),
       margin: EdgeInsets.all(10.0),
     );
+  }
+}
+
+class MyColor extends MaterialStateColor {
+  const MyColor() : super(_defaultColor);
+
+  static const int _defaultColor = 0xFF1B1D1E;
+  static const int _pressedColor = 0xde000000;
+
+  @override
+  Color resolve(Set<MaterialState> states) {
+    if (states.contains(MaterialState.pressed)) {
+      return const Color(_pressedColor);
+    }
+    return const Color(_defaultColor);
   }
 }
