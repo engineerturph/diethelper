@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
-import 'main_screen.dart';
+import 'screens/main_screen.dart';
+import 'package:diethelper/screens/secondary_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainScreen(),
+      initialRoute: MainScreen.id,
+      routes: {
+        MainScreen.id: (context) => MainScreen(),
+        SecondaryScreen.id: (context) => SecondaryScreen(),
+      },
     );
   }
 }

@@ -1,8 +1,10 @@
+import 'package:diethelper/screens/secondary_screen.dart';
 import 'package:flutter/material.dart';
 import "package:flutter_feather_icons/flutter_feather_icons.dart";
+import 'package:diethelper/constants.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  static const id = '/';
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -43,13 +45,13 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
       drawer: Drawer(
-        backgroundColor: Color(0xFF1B1D1E),
+        backgroundColor: kMainColor,
         child: ListView(
           padding: EdgeInsets.zero,
           children: const <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Color(0xFF1B1D1E),
+                color: kMainColor,
               ),
               child: Text(
                 'Empty Drawer',
@@ -68,7 +70,7 @@ class _MainScreenState extends State<MainScreen> {
           iconSize: 25.0,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
-          backgroundColor: Color(0xFF1B1D1E),
+          backgroundColor: kMainColor,
           currentIndex: 0,
           items: [
             BottomNavigationBarItem(
@@ -107,13 +109,14 @@ class CenterWidget extends StatelessWidget {
               ),
             ),
             Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  color: Colors.white,
-                ),
-                height: 30.0,
-                width: 280.0,
-                margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 40.0)),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                color: Colors.white,
+              ),
+              height: 30.0,
+              width: 280.0,
+              margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 40.0),
+            ),
             mealBox('Sabah'),
             mealBox('Öğle'),
             mealBox('Akşam'),
@@ -143,7 +146,12 @@ class mealBox extends StatelessWidget {
           ),
           TextButton(
             style: ButtonStyle(overlayColor: MyColor()),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SecondaryScreen()),
+              );
+            },
             child: Icon(
               FeatherIcons.plusSquare,
               color: Colors.white,
@@ -153,7 +161,7 @@ class mealBox extends StatelessWidget {
         ],
       ),
       decoration: BoxDecoration(
-        color: Color(0xFF1B1D1E),
+        color: kMainColor,
         borderRadius: BorderRadius.circular(15.0),
       ),
       margin: EdgeInsets.all(10.0),
