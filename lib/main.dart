@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
 import 'screens/main_screen.dart';
-import 'package:diethelper/screens/secondary_screen.dart';
+import 'package:diethelper/screens/meal_screen.dart';
+import 'constants.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,12 +18,21 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
+        primarySwatch: Colors.grey,
+        primaryColor: Colors.black,
+        textButtonTheme: TextButtonThemeData(
+          style: ButtonStyle(
+            padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+            minimumSize: MaterialStateProperty.all<Size>(Size.zero),
+            overlayColor: MyColor(),
+          ),
+        ),
       ),
       initialRoute: MainScreen.id,
       routes: {
         MainScreen.id: (context) => MainScreen(),
-        SecondaryScreen.id: (context) => SecondaryScreen(),
+        MealScreen.id: (context) => MealScreen(),
       },
     );
   }

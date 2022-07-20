@@ -1,4 +1,4 @@
-import 'package:diethelper/screens/secondary_screen.dart';
+import 'package:diethelper/screens/meal_screen.dart';
 import 'package:flutter/material.dart';
 import "package:flutter_feather_icons/flutter_feather_icons.dart";
 import 'package:diethelper/constants.dart';
@@ -142,20 +142,19 @@ class mealBox extends StatelessWidget {
         children: [
           Text(
             innerText,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           TextButton(
-            style: ButtonStyle(overlayColor: MyColor()),
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SecondaryScreen()),
+                MaterialPageRoute(builder: (context) => MealScreen()),
               );
             },
             child: Icon(
               FeatherIcons.plusSquare,
-              color: Colors.white,
               size: 40.0,
+              color: Colors.white,
             ),
           )
         ],
@@ -166,20 +165,5 @@ class mealBox extends StatelessWidget {
       ),
       margin: EdgeInsets.all(10.0),
     );
-  }
-}
-
-class MyColor extends MaterialStateColor {
-  const MyColor() : super(_defaultColor);
-
-  static const int _defaultColor = 0xFF1B1D1E;
-  static const int _pressedColor = 0xde000000;
-
-  @override
-  Color resolve(Set<MaterialState> states) {
-    if (states.contains(MaterialState.pressed)) {
-      return const Color(_pressedColor);
-    }
-    return const Color(_defaultColor);
   }
 }
