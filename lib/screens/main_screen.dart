@@ -1,7 +1,8 @@
-import 'package:diethelper/screens/meal_screen.dart';
 import 'package:flutter/material.dart';
 import "package:flutter_feather_icons/flutter_feather_icons.dart";
 import 'package:diethelper/constants.dart';
+
+import '../widgets/main_body_widget.dart';
 
 class MainScreen extends StatefulWidget {
   static const id = '/';
@@ -36,7 +37,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           Expanded(
             flex: 20,
-            child: CenterWidget(),
+            child: MainBodyWidget(),
           ),
           Expanded(
             flex: 1, // 20%
@@ -85,85 +86,6 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class CenterWidget extends StatelessWidget {
-  const CenterWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              '1280/2000 kcal',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.0),
-                color: Colors.white,
-              ),
-              height: 30.0,
-              width: 280.0,
-              margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 40.0),
-            ),
-            mealBox('Sabah'),
-            mealBox('Öğle'),
-            mealBox('Akşam'),
-            mealBox('Atıştırmalık'),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class mealBox extends StatelessWidget {
-  mealBox(this.innerText);
-
-  String innerText = '';
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 60.0,
-      padding: EdgeInsets.fromLTRB(20.0, 0.0, 15.0, 0.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            innerText,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MealScreen()),
-              );
-            },
-            child: Icon(
-              FeatherIcons.plusSquare,
-              size: 40.0,
-              color: Colors.white,
-            ),
-          )
-        ],
-      ),
-      decoration: BoxDecoration(
-        color: kMainColor,
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      margin: EdgeInsets.all(10.0),
     );
   }
 }
