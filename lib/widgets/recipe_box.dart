@@ -22,6 +22,7 @@ class _RecipeBoxState extends State<RecipeBox> {
               style: kMiddleTextStyle,
             ),
             Checkbox(
+                activeColor: Colors.grey,
                 checkColor: Colors.black,
                 value: isChecked,
                 onChanged: (bool? newValue) {
@@ -38,11 +39,14 @@ class _RecipeBoxState extends State<RecipeBox> {
             children: [
               Text(
                 '186 kcal',
-                style: kMiddleTextStyle.copyWith(color: Colors.lightBlueAccent),
+                style: kMiddleTextStyle.copyWith(color: Colors.blue),
               ),
-              Text(
-                '1 kase',
-                style: kMiddleTextStyle,
+              Padding(
+                padding: const EdgeInsets.only(right: 60.0),
+                child: Text(
+                  '1 kase',
+                  style: kMiddleTextStyle,
+                ),
               )
             ],
           ),
