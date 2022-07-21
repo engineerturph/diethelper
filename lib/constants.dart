@@ -32,3 +32,9 @@ class MyColor extends MaterialStateColor {
     return const Color(_defaultColor);
   }
 }
+
+final kButtonStyle = ButtonStyle(
+  padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+  minimumSize: MaterialStateProperty.all<Size>(Size.zero),
+  overlayColor: MyColor(),
+);

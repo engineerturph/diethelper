@@ -1,3 +1,4 @@
+import 'package:diethelper/constants.dart';
 import 'package:flutter/material.dart';
 
 class RecipeBox extends StatefulWidget {
@@ -16,7 +17,10 @@ class _RecipeBoxState extends State<RecipeBox> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Pizza'),
+            Text(
+              'Pizza',
+              style: kMiddleTextStyle,
+            ),
             Checkbox(
                 checkColor: Colors.black,
                 value: isChecked,
@@ -27,9 +31,21 @@ class _RecipeBoxState extends State<RecipeBox> {
                 })
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [Text('186 kcal'), Text('1 kase')],
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '186 kcal',
+                style: kMiddleTextStyle.copyWith(color: Colors.lightBlueAccent),
+              ),
+              Text(
+                '1 kase',
+                style: kMiddleTextStyle,
+              )
+            ],
+          ),
         ),
         Divider(color: Colors.grey)
       ],

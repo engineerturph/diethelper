@@ -11,7 +11,7 @@ class MealBodyWidget extends StatefulWidget {
 }
 
 class _MealBodyWidgetState extends State<MealBodyWidget> {
-  var FoodsList = [];
+  List<Widget> FoodsList = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -57,7 +57,10 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
                           textAlign: TextAlign.center,
                           maxLines: 1,
                         ),
-                        ...FoodsList
+                        ListView(
+                          shrinkWrap: true,
+                          children: FoodsList,
+                        )
                       ],
                     ),
                   )
@@ -79,11 +82,7 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
           width: 200.0,
           height: 80.0,
           child: TextButton(
-            style: ButtonStyle(
-              padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
-              minimumSize: MaterialStateProperty.all<Size>(Size.zero),
-              overlayColor: MyColor(),
-            ),
+            style: kButtonStyle,
             onPressed: () {},
             child: Row(
               children: [
