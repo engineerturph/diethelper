@@ -47,7 +47,7 @@ class _RecipeBoxState extends State<RecipeBox> {
                   '1 kase',
                   style: kMiddleTextStyle,
                 ),
-              )
+              ),
             ],
           ),
         ),

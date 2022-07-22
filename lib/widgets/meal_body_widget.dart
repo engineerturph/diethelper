@@ -17,6 +17,11 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
     // TODO: implement initState
     super.initState();
     FoodsList.add(RecipeBox());
+    FoodsList.add(RecipeBox());
+    FoodsList.add(RecipeBox());
+    FoodsList.add(RecipeBox());
+    FoodsList.add(RecipeBox());
+    FoodsList.add(RecipeBox());
   }
 
   @override
@@ -47,21 +52,25 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
                       )
                     ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Column(
-                      children: [
-                        TextField(
-                          decoration: kTextFieldDecoration,
-                          autofocus: true,
-                          textAlign: TextAlign.center,
-                          maxLines: 1,
-                        ),
-                        ListView(
-                          shrinkWrap: true,
-                          children: FoodsList,
-                        )
-                      ],
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Column(
+                        children: [
+                          TextField(
+                            decoration: kTextFieldDecoration,
+                            autofocus: true,
+                            textAlign: TextAlign.center,
+                            maxLines: 1,
+                          ),
+                          Flexible(
+                            fit: FlexFit.tight,
+                            child: ListView(
+                              children: FoodsList,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
