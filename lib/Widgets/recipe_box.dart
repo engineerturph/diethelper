@@ -1,8 +1,10 @@
 import 'package:diethelper/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:diethelper/Data/foods_list.dart';
 
 class RecipeBox extends StatefulWidget {
-  const RecipeBox({Key? key}) : super(key: key);
+  RecipeBox({required this.index});
+  int index;
 
   @override
   State<RecipeBox> createState() => _RecipeBoxState();
@@ -18,16 +20,16 @@ class _RecipeBoxState extends State<RecipeBox> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Pizza',
+              FoodsList[widget.index].name,
               style: kMiddleTextStyle,
             ),
             Checkbox(
                 activeColor: Colors.grey,
                 checkColor: Colors.black,
-                value: isChecked,
+                value: FoodsList[widget.index].isAdded,
                 onChanged: (bool? newValue) {
                   setState(() {
-                    isChecked = newValue;
+                    FoodsList[widget.index].isAdded = newValue ?? false;
                   });
                 })
           ],
@@ -38,13 +40,13 @@ class _RecipeBoxState extends State<RecipeBox> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '186 kcal',
+                '${FoodsList[widget.index].kcalList[0]} kcal',
                 style: kMiddleTextStyle.copyWith(color: Colors.blue),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 60.0),
                 child: Text(
-                  '1 kase',
+                  '1 ${FoodsList[widget.index].typeList[0]}',
                   style: kMiddleTextStyle,
                 ),
               ),

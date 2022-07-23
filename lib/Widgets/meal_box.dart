@@ -1,7 +1,7 @@
 import 'package:diethelper/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import '../screens/meal_screen.dart';
+import '../Screens/meal_screen.dart';
 
 class MealBox extends StatelessWidget {
   MealBox(this.innerText);

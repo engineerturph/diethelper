@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
-import 'screens/main_screen.dart';
-import 'package:diethelper/screens/meal_screen.dart';
+import 'Screens/main_screen.dart';
+import 'package:diethelper/Screens/meal_screen.dart';
 import 'constants.dart';
 
 void main() {

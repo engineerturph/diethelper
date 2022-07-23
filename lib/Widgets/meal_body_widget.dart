@@ -1,7 +1,10 @@
+import 'package:diethelper/Screens/add_recipe_screen.dart';
 import 'package:diethelper/constants.dart';
-import 'package:diethelper/widgets/recipe_box.dart';
+import 'package:diethelper/Widgets/recipe_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import '../Data/food.dart';
+import '../Data/foods_list.dart';
 
 class MealBodyWidget extends StatefulWidget {
   const MealBodyWidget({Key? key}) : super(key: key);
@@ -11,17 +14,15 @@ class MealBodyWidget extends StatefulWidget {
 }
 
 class _MealBodyWidgetState extends State<MealBodyWidget> {
-  List<Widget> FoodsList = [];
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    FoodsList.add(RecipeBox());
-    FoodsList.add(RecipeBox());
-    FoodsList.add(RecipeBox());
-    FoodsList.add(RecipeBox());
-    FoodsList.add(RecipeBox());
-    FoodsList.add(RecipeBox());
+    FoodsList.add(Food(name: 'Pizza', kcalList: [111], typeList: ['kase']));
+    FoodsList.add(Food(name: 'Pizza', kcalList: [111], typeList: ['kase']));
+    FoodsList.add(Food(name: 'Pizza', kcalList: [111], typeList: ['kase']));
+    FoodsList.add(Food(name: 'Pizza', kcalList: [111], typeList: ['kase']));
+    FoodsList.add(Food(name: 'Pizza', kcalList: [111], typeList: ['kase']));
   }
 
   @override
@@ -34,21 +35,26 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
           child: Container(
             width: double.infinity,
             child: Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         'Atistirmalik',
                         style: kMiddleTextStyle,
                       ),
-                      Icon(
-                        FeatherIcons.chevronLeft,
-                        color: Colors.white,
-                        size: 40.0,
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          FeatherIcons.chevronLeft,
+                          color: Colors.white,
+                          size: 40.0,
+                        ),
                       )
                     ],
                   ),
@@ -65,8 +71,13 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
                           ),
                           Flexible(
                             fit: FlexFit.tight,
-                            child: ListView(
-                              children: FoodsList,
+                            child: ListView.builder(
+                              itemBuilder: <Widget>(context, index) {
+                                return RecipeBox(
+                                  index: index,
+                                );
+                              },
+                              itemCount: FoodsList.length,
                             ),
                           )
                         ],
@@ -92,7 +103,10 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
           height: 80.0,
           child: TextButton(
             style: kButtonStyle,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AddRecipeScreen()));
+            },
             child: Row(
               children: [
                 Padding(

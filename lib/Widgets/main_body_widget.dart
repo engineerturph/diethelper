@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'meal_box.dart';
 
 class MainBodyWidget extends StatelessWidget {
