@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-
 import '../constants.dart';
 
 class AddRecipeBody extends StatelessWidget {
@@ -13,25 +12,12 @@ class AddRecipeBody extends StatelessWidget {
         padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Atistirmalik',
-                  style: kMiddleTextStyle,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    FeatherIcons.chevronLeft,
-                    color: Colors.white,
-                    size: 40.0,
-                  ),
-                )
-              ],
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text(
+                'Add Recipe',
+                style: kMiddleTextStyle,
+              ),
             ),
             Expanded(
               child: Padding(
@@ -41,13 +27,78 @@ class AddRecipeBody extends StatelessWidget {
                 ),
                 child: ListView(
                   children: [
-                    TextField(
-                      decoration: kTextFieldDecoration.copyWith(
-                          hintText: 'Recipe Name'),
-                      autofocus: true,
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                    )
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: TextField(
+                        decoration: kTextFieldDecoration.copyWith(
+                            hintText: 'Recipe Name'),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: TextField(
+                        decoration: kTextFieldDecoration.copyWith(
+                            hintText: 'Kcal per 100g'),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: TextField(
+                        decoration:
+                            kTextFieldDecoration.copyWith(hintText: 'Carb gr'),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: TextField(
+                        decoration: kTextFieldDecoration.copyWith(
+                            hintText: 'Protein gr'),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: TextField(
+                        decoration:
+                            kTextFieldDecoration.copyWith(hintText: 'Fat gr'),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                      ),
+                    ),
+                    Align(
+                      child: Container(
+                        height: 60.0,
+                        width: 300.0,
+                        color: kSecondaryColor,
+                        child: PopupMenuButton(
+                            enabled: true,
+                            offset: Offset(0, 60.0),
+                            child: Center(
+                                child: Text(
+                              'Add Portions',
+                              style: kMiddleTextStyle,
+                            )),
+                            itemBuilder: (context) => [
+                                  PopupMenuItem(
+                                    child: Container(
+                                        width: 200.0,
+                                        child: Center(child: Text('1 slice'))),
+                                  ),
+                                  PopupMenuItem(
+                                    child: Container(
+                                        width: 200.0,
+                                        child: Center(child: Text('1 slice'))),
+                                  ),
+                                ]),
+                      ),
+                    ),
                   ],
                 ),
               ),

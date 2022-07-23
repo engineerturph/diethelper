@@ -38,25 +38,12 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
               padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Atistirmalik',
-                        style: kMiddleTextStyle,
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          FeatherIcons.chevronLeft,
-                          color: Colors.white,
-                          size: 40.0,
-                        ),
-                      )
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text(
+                      'Atistirmalik',
+                      style: kMiddleTextStyle,
+                    ),
                   ),
                   Expanded(
                     child: Padding(

@@ -21,11 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
         primaryColor: Colors.black,
         textButtonTheme: TextButtonThemeData(
-          style: ButtonStyle(
-            padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
-            minimumSize: MaterialStateProperty.all<Size>(Size.zero),
-            overlayColor: MyColor(),
-          ),
+          style: kButtonStyle,
         ),
       ),
       initialRoute: MainScreen.id,
