@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class RecipeScreen extends StatefulWidget {
   const RecipeScreen({Key? key}) : super(key: key);
 
@@ -10,6 +12,20 @@ class RecipeScreen extends StatefulWidget {
 class _RecipeScreenState extends State<RecipeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Container(
+            child: Container(),
+            decoration: BoxDecoration(
+              color: kMainColor,
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

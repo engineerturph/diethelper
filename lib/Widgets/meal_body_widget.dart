@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import '../Data/food.dart';
 import '../Data/foods_list.dart';
+import '../Screens/recipe_screen.dart';
 
 class MealBodyWidget extends StatefulWidget {
   const MealBodyWidget({Key? key}) : super(key: key);
@@ -60,8 +61,18 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
                             fit: FlexFit.tight,
                             child: ListView.builder(
                               itemBuilder: <Widget>(context, index) {
-                                return RecipeBox(
-                                  index: index,
+                                return GestureDetector(
+                                  behavior: HitTestBehavior.translucent,
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                RecipeScreen()));
+                                  },
+                                  child: RecipeBox(
+                                    index: index,
+                                  ),
                                 );
                               },
                               itemCount: FoodsList.length,
