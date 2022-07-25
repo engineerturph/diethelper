@@ -13,6 +13,16 @@ class RecipeBox extends StatefulWidget {
 }
 
 class _RecipeBoxState extends State<RecipeBox> {
+  get kcalNum {
+    return FoodsList[widget.index].kcal100g?[1];
+  }
+
+  String? kcalType(kcalNo) {
+    if (kcalNo == FoodsList[widget.index].kcal100g?[1]) {
+      return 'g';
+    }
+  }
+
   bool? isChecked = false;
   @override
   Widget build(BuildContext context) {
@@ -51,13 +61,13 @@ class _RecipeBoxState extends State<RecipeBox> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '${FoodsList[widget.index].kcalList[0]} kcal',
+                        '$kcalNum kcal',
                         style: kMiddleTextStyle.copyWith(color: Colors.blue),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 60.0),
                         child: Text(
-                          '1 ${FoodsList[widget.index].typeList[0]}',
+                          '100 ${kcalType(kcalNum)}',
                           style: kMiddleTextStyle,
                         ),
                       ),

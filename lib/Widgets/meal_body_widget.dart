@@ -19,11 +19,6 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    FoodsList.add(Food(name: 'Pizza', kcalList: [111], typeList: ['kase']));
-    FoodsList.add(Food(name: 'Pizza', kcalList: [111], typeList: ['kase']));
-    FoodsList.add(Food(name: 'Pizza', kcalList: [111], typeList: ['kase']));
-    FoodsList.add(Food(name: 'Pizza', kcalList: [111], typeList: ['kase']));
-    FoodsList.add(Food(name: 'Pizza', kcalList: [111], typeList: ['kase']));
   }
 
   @override
