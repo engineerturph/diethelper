@@ -19,20 +19,35 @@ class _RecipeScreenState extends State<RecipeScreen> {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Container(
-            child: ListView(
-              shrinkWrap: true,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('Pizza'),
-                Text('Add to meal'),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Pizza',
+                    style: kMiddleTextStyle,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Add to meal',
+                    style: kMiddleTextStyle,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
                   child: Row(
                     children: [
-                      Icon(FeatherIcons.plus),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Icon(FeatherIcons.plus),
+                      ),
                       Expanded(
-                        child: TextField(
-                          decoration: kTextFieldDecoration.copyWith(
-                              hintText: 'Recipe Name'),
+                        child: TextFormField(
+                          initialValue: '100',
+                          decoration: kTextFieldDecoration,
                           textAlign: TextAlign.center,
                           maxLines: 1,
                         ),
@@ -41,21 +56,72 @@ class _RecipeScreenState extends State<RecipeScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Row(
                     children: [
-                      Icon(FeatherIcons.chevronLeft),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                        child: Icon(FeatherIcons.moreVertical),
+                      ),
                       Expanded(
                         child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5.0),
                               color: kSecondaryColor,
                             ),
-                            width: 200.0,
                             height: 40.0,
-                            child: MyStatefulWidget()),
+                            child: Center(child: MyStatefulWidget())),
                       ),
                     ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextButton(
+                      style: kButtonStyle,
+                      onPressed: () {
+                        print('as');
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 50.0,
+                        color: kSecondaryColor,
+                        child: Center(
+                          child: Text(
+                            'SAVE',
+                            style: kMiddleTextStyle,
+                          ),
+                        ),
+                      )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    height: 200,
+                    width: double.infinity,
+                    child: GridView.count(
+                      physics: NeverScrollableScrollPhysics(),
+                      childAspectRatio: 2,
+                      crossAxisCount: 2,
+                      children: [
+                        TileBox(
+                          header: 'Kcal',
+                          footer: '500',
+                        ),
+                        TileBox(
+                          header: 'Fat',
+                          footer: '34gr',
+                        ),
+                        TileBox(
+                          header: 'Carbohydrate',
+                          footer: '25gr',
+                        ),
+                        TileBox(
+                          header: 'Protein',
+                          footer: '15gr',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Container()
@@ -66,6 +132,43 @@ class _RecipeScreenState extends State<RecipeScreen> {
               borderRadius: BorderRadius.circular(15.0),
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class TileBox extends StatelessWidget {
+  TileBox({header, footer}) {
+    this.headerText = header;
+    this.footerText = footer;
+  }
+  String headerText = '';
+  String footerText = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(2.0),
+      child: GridTile(
+        child: Container(
+          color: kSecondaryColor,
+        ),
+        header: Padding(
+          padding: const EdgeInsets.only(top: 15.0),
+          child: Center(
+              child: Text(
+            headerText,
+            style: kMiddleTextStyle,
+          )),
+        ),
+        footer: Padding(
+          padding: const EdgeInsets.only(bottom: 15.0),
+          child: Center(
+              child: Text(
+            footerText,
+            style: kMiddleTextStyle,
+          )),
         ),
       ),
     );

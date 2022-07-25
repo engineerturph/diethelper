@@ -61,18 +61,8 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
                             fit: FlexFit.tight,
                             child: ListView.builder(
                               itemBuilder: <Widget>(context, index) {
-                                return GestureDetector(
-                                  behavior: HitTestBehavior.translucent,
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                RecipeScreen()));
-                                  },
-                                  child: RecipeBox(
-                                    index: index,
-                                  ),
+                                return RecipeBox(
+                                  index: index,
                                 );
                               },
                               itemCount: FoodsList.length,
