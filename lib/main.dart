@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'Screens/main_screen.dart';
 import 'package:diethelper/Screens/meal_screen.dart';
 import 'constants.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
