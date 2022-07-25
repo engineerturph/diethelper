@@ -3,6 +3,7 @@ import 'package:diethelper/constants.dart';
 import 'package:diethelper/Widgets/recipe_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:provider/provider.dart';
 import '../Data/food.dart';
 import '../Data/foods_list.dart';
 import '../Screens/recipe_screen.dart';
@@ -60,7 +61,8 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
                                   index: index,
                                 );
                               },
-                              itemCount: FoodsList.length,
+                              itemCount:
+                                  context.watch<FoodData>().FoodsList.length,
                             ),
                           )
                         ],
