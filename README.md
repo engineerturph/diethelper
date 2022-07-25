@@ -7,7 +7,7 @@ Design pages made and added
 
 Roadmap
 
-- Make add recipe page which looks like searching page(add recipe page)  
+- Make add recipe page which looks like searching page(add recipe page)  ✅  
 - Make page for every recipe(recipe page)  
 - Create recipes, eaten recipes provider.  
 - Main page/ Show added recipes in main page  
@@ -19,3 +19,8 @@ Roadmap
 - Meal page/ Add added recipes inside meal page  
 - Recipe page/ Edit recipe attributes  
 - Add more jobs if needed  
+
+
+I will do later if necessary  
+Wanting all nutritional values of recipe in a different page than getting with a form  
+Wanting brand name of recipe if exists  

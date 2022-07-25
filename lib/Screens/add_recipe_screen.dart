@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import '../constants.dart';
 
-class AddRecipeScreen extends StatelessWidget {
+class AddRecipeScreen extends StatefulWidget {
   const AddRecipeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<AddRecipeScreen> createState() => _AddRecipeScreenState();
+}
+
+class _AddRecipeScreenState extends State<AddRecipeScreen> {
+  String dropdownValue = 'Grams';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,33 +83,38 @@ class AddRecipeScreen extends StatelessWidget {
                               maxLines: 1,
                             ),
                           ),
-                          Align(
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5.0),
                             child: Container(
-                              height: 60.0,
-                              width: 300.0,
-                              color: kSecondaryColor,
-                              child: PopupMenuButton(
-                                  enabled: true,
-                                  offset: Offset(0, 60.0),
-                                  child: Center(
+                              decoration: BoxDecoration(
+                                color: kSecondaryColor,
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                        child: Container(
                                       child: Text(
-                                    'Add Portions',
-                                    style: kMiddleTextStyle,
-                                  )),
-                                  itemBuilder: (context) => [
+                                        'Add Portion',
+                                        style: kMiddleTextStyle,
+                                      ),
+                                    )),
+                                    PopupMenuButton(
+                                      child: Icon(FeatherIcons.cornerRightDown),
+                                      itemBuilder: (context) => [
                                         PopupMenuItem(
-                                          child: Container(
-                                              width: 200.0,
-                                              child: Center(
-                                                  child: Text('1 slice'))),
+                                          child: Text('1 slice'),
                                         ),
                                         PopupMenuItem(
-                                          child: Container(
-                                              width: 200.0,
-                                              child: Center(
-                                                  child: Text('1 slice'))),
-                                        ),
-                                      ]),
+                                          child: Text('1 portion(200g)'),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ],
