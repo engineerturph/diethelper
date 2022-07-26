@@ -9,7 +9,7 @@ Roadmap
 
 - Make add recipe page which looks like searching page(add recipe page)  ✅  
 - Make page for every recipe(recipe page)  ✅  
-- Create recipes, eaten recipes provider.  
+- Create recipes, eaten recipes provider.  ✅  
 - Main page/ Show added recipes in main page  
 - Main page/ Open and close added recipes bar  
 - Main page/ Show calories taken  
