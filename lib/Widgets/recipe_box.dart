@@ -18,7 +18,7 @@ class _RecipeBoxState extends State<RecipeBox> {
   }
 
   String? kcalType(kcalNo) {
-    if (kcalNo == foodData.FoodsList[widget.index].kcal100g) {
+    if (kcalNo == context.watch<FoodData>().FoodsList[widget.index].kcal100g) {
       return 'g';
     }
   }
@@ -31,8 +31,10 @@ class _RecipeBoxState extends State<RecipeBox> {
         TextButton(
           style: kButtonStyle,
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => RecipeScreen()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => RecipeScreen(widget.index)));
           },
           child: Container(
             child: Column(
@@ -52,12 +54,7 @@ class _RecipeBoxState extends State<RecipeBox> {
                             .FoodsList[widget.index]
                             .isAdded,
                         onChanged: (bool? newValue) {
-                          setState(() {
-                            context
-                                .watch<FoodData>()
-                                .FoodsList[widget.index]
-                                .isAdded = newValue ?? false;
-                          });
+                          context.read<FoodData>().addFoodToMeal(widget.index);
                         })
                   ],
                 ),

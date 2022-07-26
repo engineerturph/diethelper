@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-
+import 'package:diethelper/Data/foods_list.dart';
+import 'package:provider/provider.dart';
 import '../constants.dart';
 
 class RecipeScreen extends StatefulWidget {
-  const RecipeScreen({Key? key}) : super(key: key);
+  RecipeScreen(this.index);
+  int index;
 
   @override
   State<RecipeScreen> createState() => _RecipeScreenState();
@@ -25,7 +27,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Pizza',
+                    context.read<FoodData>().FoodsList[widget.index].name,
                     style: kMiddleTextStyle,
                   ),
                 ),
@@ -105,20 +107,24 @@ class _RecipeScreenState extends State<RecipeScreen> {
                       crossAxisCount: 2,
                       children: [
                         TileBox(
-                          header: 'Kcal',
-                          footer: '500',
+                          header: 'Calories',
+                          footer:
+                              '${context.read<FoodData>().FoodsList[widget.index].kcal100g}kcal',
                         ),
                         TileBox(
                           header: 'Fat',
-                          footer: '34gr',
+                          footer:
+                              '${context.read<FoodData>().FoodsList[widget.index].fatgr}gr',
                         ),
                         TileBox(
                           header: 'Carbohydrate',
-                          footer: '25gr',
+                          footer:
+                              '${context.read<FoodData>().FoodsList[widget.index].carbohydrategr}gr',
                         ),
                         TileBox(
                           header: 'Protein',
-                          footer: '15gr',
+                          footer:
+                              '${context.read<FoodData>().FoodsList[widget.index].fatgr}gr',
                         ),
                       ],
                     ),
