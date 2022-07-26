@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import "package:flutter_feather_icons/flutter_feather_icons.dart";
 import 'package:diethelper/constants.dart';
-
-import '../widgets/main_body_widget.dart';
+import '../widgets/main screen widgets/main_body_widget.dart';
 
 class MainScreen extends StatefulWidget {
   static const id = '/';

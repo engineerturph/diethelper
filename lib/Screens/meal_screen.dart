@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:flutter_feather_icons/flutter_feather_icons.dart";
-import '../Widgets/meal_body_widget.dart';
+import '../Widgets/meal screen widgets/meal_body_widget.dart';
 
 class MealScreen extends StatefulWidget {
   static const id = '/second';

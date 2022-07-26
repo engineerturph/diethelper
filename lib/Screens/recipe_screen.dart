@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:diethelper/Data/foods_list.dart';
 import 'package:provider/provider.dart';
+import '../Widgets/recipe screen widgets/tile_box_recipe.dart';
+import '../Widgets/recipe screen widgets/recipe_type_chooser_dropdown_button.dart';
 import '../constants.dart';
 
 class RecipeScreen extends StatefulWidget {
@@ -72,7 +74,8 @@ class _RecipeScreenState extends State<RecipeScreen> {
                               color: kSecondaryColor,
                             ),
                             height: 40.0,
-                            child: Center(child: MyStatefulWidget())),
+                            child: Center(
+                                child: RecipeTypeChooserDropdownButton())),
                       ),
                     ],
                   ),
@@ -106,22 +109,22 @@ class _RecipeScreenState extends State<RecipeScreen> {
                       childAspectRatio: 2,
                       crossAxisCount: 2,
                       children: [
-                        TileBox(
+                        TileBoxRecipe(
                           header: 'Calories',
                           footer:
                               '${context.read<FoodData>().FoodsList[widget.index].kcal100g}kcal',
                         ),
-                        TileBox(
+                        TileBoxRecipe(
                           header: 'Fat',
                           footer:
                               '${context.read<FoodData>().FoodsList[widget.index].fatgr}gr',
                         ),
-                        TileBox(
+                        TileBoxRecipe(
                           header: 'Carbohydrate',
                           footer:
                               '${context.read<FoodData>().FoodsList[widget.index].carbohydrategr}gr',
                         ),
-                        TileBox(
+                        TileBoxRecipe(
                           header: 'Protein',
                           footer:
                               '${context.read<FoodData>().FoodsList[widget.index].fatgr}gr',
@@ -140,78 +143,6 @@ class _RecipeScreenState extends State<RecipeScreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class TileBox extends StatelessWidget {
-  TileBox({header, footer}) {
-    this.headerText = header;
-    this.footerText = footer;
-  }
-  String headerText = '';
-  String footerText = '';
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(2.0),
-      child: GridTile(
-        child: Container(
-          color: kSecondaryColor,
-        ),
-        header: Padding(
-          padding: const EdgeInsets.only(top: 15.0),
-          child: Center(
-              child: Text(
-            headerText,
-            style: kMiddleTextStyle,
-          )),
-        ),
-        footer: Padding(
-          padding: const EdgeInsets.only(bottom: 15.0),
-          child: Center(
-              child: Text(
-            footerText,
-            style: kMiddleTextStyle,
-          )),
-        ),
-      ),
-    );
-  }
-}
-
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
-
-  @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
-}
-
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  String dropdownValue = 'Grams';
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      alignment: Alignment.center,
-      value: dropdownValue,
-      style: kMiddleTextStyle,
-      underline: Container(
-        height: 0,
-      ),
-      onChanged: (String? newValue) {
-        setState(() {
-          dropdownValue = newValue!;
-        });
-      },
-      items: <String>['Grams', '1 Portion(200g)', '1 Plate']
-          .map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Center(child: Text(value)),
-        );
-      }).toList(),
     );
   }
 }

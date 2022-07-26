@@ -2,7 +2,7 @@ import 'package:diethelper/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:diethelper/Data/foods_list.dart';
 import 'package:provider/provider.dart';
-import '../Screens/recipe_screen.dart';
+import '../../Screens/recipe_screen.dart';
 
 class RecipeBox extends StatefulWidget {
   RecipeBox({required this.index});

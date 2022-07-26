@@ -3,6 +3,8 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:provider/provider.dart';
 import '../Data/foods_list.dart';
 import '../Data/food.dart';
+import '../Widgets/add recipe screen widgets/add_recipe_add_portion_button.dart';
+import '../Widgets/add recipe screen widgets/add_recipe_text_field.dart';
 import '../constants.dart';
 
 class AddRecipeScreen extends StatefulWidget {
@@ -30,7 +32,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
           padding: EdgeInsets.all(15.0),
           child: Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0),
-            child: Column(
+            child: ListView(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(15.0),
@@ -47,66 +49,31 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                     ),
                     child: Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5.0),
-                          child: TextField(
-                            decoration: kTextFieldDecoration.copyWith(
-                                hintText: 'Recipe Name'),
-                            textAlign: TextAlign.center,
-                            maxLines: 1,
+                        AddRecipeTextField(
                             onChanged: (value) {
                               recipeName = value;
                             },
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5.0),
-                          child: TextField(
-                            decoration: kTextFieldDecoration.copyWith(
-                                hintText: 'Kcal per 100g'),
-                            textAlign: TextAlign.center,
-                            maxLines: 1,
+                            hintText: 'Recipe Name'),
+                        AddRecipeTextField(
                             onChanged: (value) {
                               kcalper100g = int.parse(value);
                             },
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5.0),
-                          child: TextField(
-                            decoration: kTextFieldDecoration.copyWith(
-                                hintText: 'Carb gr'),
-                            textAlign: TextAlign.center,
-                            maxLines: 1,
+                            hintText: 'Kcal per 100g'),
+                        AddRecipeTextField(
                             onChanged: (value) {
                               carbgr = int.parse(value);
                             },
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5.0),
-                          child: TextField(
-                            decoration: kTextFieldDecoration.copyWith(
-                                hintText: 'Protein gr'),
-                            textAlign: TextAlign.center,
-                            maxLines: 1,
+                            hintText: 'Carb gr'),
+                        AddRecipeTextField(
                             onChanged: (value) {
                               proteingr = int.parse(value);
                             },
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5.0),
-                          child: TextField(
-                            decoration: kTextFieldDecoration.copyWith(
-                                hintText: 'Fat gr'),
-                            textAlign: TextAlign.center,
-                            maxLines: 1,
+                            hintText: 'Protein gr'),
+                        AddRecipeTextField(
                             onChanged: (value) {
                               fatgr = int.parse(value);
                             },
-                          ),
-                        ),
+                            hintText: 'Fat gr'),
                         AddPortionButton(),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 80.0),
@@ -128,6 +95,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                     carbohydrategr: carbgr,
                                     meal: Meals.noMeal,
                                   ));
+                              Navigator.pop(context);
                             },
                             style: kButtonStyle,
                             child: Container(
@@ -151,48 +119,6 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                 ),
               ],
             ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class AddPortionButton extends StatelessWidget {
-  const AddPortionButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: kSecondaryColor,
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Expanded(
-                  child: Text(
-                'Add Portion',
-                style: kMiddleTextStyle,
-              )),
-              PopupMenuButton(
-                child: Icon(FeatherIcons.cornerRightDown),
-                itemBuilder: (context) => [
-                  PopupMenuItem(
-                    child: Text('1 slice'),
-                  ),
-                  PopupMenuItem(
-                    child: Text('1 portion(200g)'),
-                  )
-                ],
-              ),
-            ],
           ),
         ),
       ),

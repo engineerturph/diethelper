@@ -1,12 +1,10 @@
 import 'package:diethelper/Screens/add_recipe_screen.dart';
 import 'package:diethelper/constants.dart';
-import 'package:diethelper/Widgets/recipe_box.dart';
+import 'recipe_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:provider/provider.dart';
-import '../Data/food.dart';
-import '../Data/foods_list.dart';
-import '../Screens/recipe_screen.dart';
+import '../../Data/foods_list.dart';
 
 class MealBodyWidget extends StatefulWidget {
   const MealBodyWidget({Key? key}) : super(key: key);
@@ -17,11 +15,6 @@ class MealBodyWidget extends StatefulWidget {
 
 class _MealBodyWidgetState extends State<MealBodyWidget> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
