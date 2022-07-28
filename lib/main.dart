@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        cardColor: kSecondaryColor,
         brightness: Brightness.dark,
         primarySwatch: Colors.grey,
         primaryColor: Colors.black,

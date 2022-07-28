@@ -9,36 +9,41 @@ class MealBox extends StatelessWidget {
   String innerText = '';
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 60.0,
-      padding: EdgeInsets.fromLTRB(20.0, 0.0, 15.0, 0.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            innerText,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Container(
+        height: 60.0,
+        decoration: BoxDecoration(
+          color: kMainColor,
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                innerText,
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MealScreen()),
+                  );
+                },
+                child: Icon(
+                  FeatherIcons.plusSquare,
+                  size: 40.0,
+                  color: Colors.white,
+                ),
+              )
+            ],
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MealScreen()),
-              );
-            },
-            child: Icon(
-              FeatherIcons.plusSquare,
-              size: 40.0,
-              color: Colors.white,
-            ),
-          )
-        ],
+        ),
       ),
-      decoration: BoxDecoration(
-        color: kMainColor,
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      margin: EdgeInsets.all(10.0),
     );
   }
 }
