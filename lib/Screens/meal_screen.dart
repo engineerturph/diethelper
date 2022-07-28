@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import "package:flutter_feather_icons/flutter_feather_icons.dart";
+import '../Data/food.dart';
 import '../Widgets/meal screen widgets/meal_body_widget.dart';
 
 class MealScreen extends StatefulWidget {
+  MealScreen({this.curMeal});
+  Meals? curMeal;
   static const id = '/second';
+
   @override
   State<MealScreen> createState() => _MealScreenState();
 }
@@ -26,7 +30,7 @@ class _MealScreenState extends State<MealScreen> {
         ),
         title: null,
       ),
-      body: MealBodyWidget(),
+      body: MealBodyWidget(curMeal: widget.curMeal),
       drawer: Drawer(
         backgroundColor: Color(0xFF1B1D1E),
         child: ListView(

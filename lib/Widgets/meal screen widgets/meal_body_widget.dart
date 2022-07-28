@@ -1,5 +1,6 @@
 import 'package:diethelper/Screens/add_recipe_screen.dart';
 import 'package:diethelper/constants.dart';
+import '../../Data/food.dart';
 import 'recipe_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -7,14 +8,25 @@ import 'package:provider/provider.dart';
 import '../../Data/foods_list.dart';
 
 class MealBodyWidget extends StatefulWidget {
-  const MealBodyWidget({Key? key}) : super(key: key);
-
+  MealBodyWidget({this.curMeal});
+  Meals? curMeal;
   @override
   State<MealBodyWidget> createState() => _MealBodyWidgetState();
 }
 
 class _MealBodyWidgetState extends State<MealBodyWidget> {
-  @override
+  String? getname() {
+    if (widget.curMeal == Meals.Extra) {
+      return 'Extra';
+    } else if (widget.curMeal == Meals.Morning) {
+      return 'Breakfast';
+    } else if (widget.curMeal == Meals.Afternoon) {
+      return 'Lunch';
+    } else if (widget.curMeal == Meals.Night) {
+      return 'Dinner';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,7 +43,7 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
-                      'Atistirmalik',
+                      getname() ?? '',
                       style: kMiddleTextStyle,
                     ),
                   ),

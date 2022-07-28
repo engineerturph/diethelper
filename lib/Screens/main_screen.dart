@@ -3,14 +3,9 @@ import "package:flutter_feather_icons/flutter_feather_icons.dart";
 import 'package:diethelper/constants.dart';
 import '../widgets/main screen widgets/main_body_widget.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends StatelessWidget {
   static const id = '/';
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'food.dart';
 
 class FoodData extends ChangeNotifier {
+  List<Food> BreakFastFoods = [];
   List<Food> FoodsList = [
     Food(
         name: 'Pizza',

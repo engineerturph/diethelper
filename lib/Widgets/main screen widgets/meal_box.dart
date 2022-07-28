@@ -2,10 +2,11 @@ import 'package:diethelper/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import '../../Screens/meal_screen.dart';
+import '../../Data/food.dart';
 
 class MealBox extends StatelessWidget {
-  MealBox(this.innerText);
-
+  MealBox({required this.innerText, required this.mealData});
+  Meals mealData;
   String innerText = '';
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,8 @@ class MealBox extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MealScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => MealScreen(curMeal: mealData)),
                   );
                 },
                 child: Icon(

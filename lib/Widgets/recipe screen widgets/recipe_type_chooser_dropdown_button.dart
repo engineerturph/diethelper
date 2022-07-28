@@ -1,4 +1,6 @@
+import 'package:diethelper/Data/animation_attr.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants.dart';
 
@@ -18,16 +20,12 @@ class _RecipeTypeChooserDropdownButtonState
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       alignment: Alignment.center,
-      value: dropdownValue,
+      value: context.watch<AnimationAttrData>().dropdownValue,
       style: kMiddleTextStyle,
       underline: Container(
         height: 0,
       ),
-      onChanged: (String? newValue) {
-        setState(() {
-          dropdownValue = newValue!;
-        });
-      },
+      onChanged: context.read<AnimationAttrData>().DropdownButtonFunction,
       items: <String>['Grams', '1 Portion(200g)', '1 Plate']
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(

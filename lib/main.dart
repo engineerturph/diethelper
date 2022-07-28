@@ -1,3 +1,4 @@
+import 'package:diethelper/Data/animation_attr.dart';
 import 'package:diethelper/Data/foods_list.dart';
 import 'package:flutter/material.dart';
 import 'Screens/main_screen.dart';
@@ -7,8 +8,15 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => FoodData(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => FoodData(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => AnimationAttrData(),
+        ),
+      ],
       child: const MyApp(),
     ),
   );
