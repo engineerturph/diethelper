@@ -2,6 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'food.dart';
 
 class FoodData extends ChangeNotifier {
+  var mealFoodsMap = {
+    'breakfastFoods': <Food>[],
+    'lunchFoods': <Food>[],
+    'dinnerFoods': <Food>[],
+    'extraFoods': <Food>[]
+  };
   List<Food> BreakFastFoods = [];
   List<Food> FoodsList = [
     Food(

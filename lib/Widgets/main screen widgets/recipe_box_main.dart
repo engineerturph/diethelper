@@ -4,9 +4,25 @@ import 'package:provider/provider.dart';
 import '../../Data/foods_list.dart';
 import '../../constants.dart';
 
-class RecipeBoxMain extends StatelessWidget {
-  RecipeBoxMain({required this.index});
+class RecipeBoxMain extends StatefulWidget {
+  RecipeBoxMain({required this.index, required this.mealValue});
   int index;
+  String mealValue;
+  @override
+  State<RecipeBoxMain> createState() => _RecipeBoxMainState();
+}
+
+class _RecipeBoxMainState extends State<RecipeBoxMain> {
+  String? kcalType(kcalNo) {
+    if (kcalNo ==
+        context
+            .watch<FoodData>()
+            .mealFoodsMap[widget.mealValue]![widget.index]
+            .kcal100g) {
+      return 'g';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,17 +35,13 @@ class RecipeBoxMain extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      context.watch<FoodData>().FoodsList[index].name,
+                      '100 ${kcalType(context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].kcal100g)} ${context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].name}',
                       style: kMiddleTextStyle,
                     ),
-                    Checkbox(
-                        activeColor: Colors.grey,
-                        checkColor: Colors.black,
-                        value:
-                            context.watch<FoodData>().FoodsList[index].isAdded,
-                        onChanged: (bool? newValue) {
-                          context.read<FoodData>().addFoodToMeal(index);
-                        })
+                    Text(
+                      '${context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].kcal100g} kcal',
+                      style: kMiddleTextStyle.copyWith(color: Colors.blue),
+                    )
                   ],
                 ),
               ],
