@@ -4,8 +4,8 @@ import '../Data/food.dart';
 import '../Widgets/meal screen widgets/meal_body_widget.dart';
 
 class MealScreen extends StatefulWidget {
-  MealScreen({this.curMeal});
-  Meals? curMeal;
+  MealScreen({required this.curMeal});
+  Meals curMeal;
   static const id = '/second';
 
   @override

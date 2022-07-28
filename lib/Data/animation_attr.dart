@@ -7,28 +7,28 @@ import 'food.dart';
 class AnimationAttrData extends ChangeNotifier {
   //Main Screen Meal With Recipe
   var mapExpandIcon = {
-    'breakfastFoods': FeatherIcons.chevronDown,
-    'lunchFoods': FeatherIcons.chevronDown,
-    'dinnerFoods': FeatherIcons.chevronDown,
-    'extraFoods': FeatherIcons.chevronDown,
+    Meals.Morning: FeatherIcons.chevronDown,
+    Meals.Afternoon: FeatherIcons.chevronDown,
+    Meals.Night: FeatherIcons.chevronDown,
+    Meals.Extra: FeatherIcons.chevronDown,
   };
   var mapColumnHeight = {
-    'breakfastFoods': 20.0,
-    'lunchFoods': 20.0,
-    'dinnerFoods': 20.0,
-    'extraFoods': 20.0,
+    Meals.Morning: 20.0,
+    Meals.Afternoon: 20.0,
+    Meals.Night: 20.0,
+    Meals.Extra: 20.0,
   };
   var mapExpanded = {
-    'breakfastFoods': false,
-    'lunchFoods': false,
-    'dinnerFoods': false,
-    'extraFoods': false,
+    Meals.Morning: false,
+    Meals.Afternoon: false,
+    Meals.Night: false,
+    Meals.Extra: false,
   };
   var mapExpandingColumn = {
-    'breakfastFoods': <Widget>[],
-    'lunchFoods': <Widget>[],
-    'dinnerFoods': <Widget>[],
-    'extraFoods': <Widget>[]
+    Meals.Morning: <Widget>[],
+    Meals.Afternoon: <Widget>[],
+    Meals.Night: <Widget>[],
+    Meals.Extra: <Widget>[]
   };
   //Add Recipe type chooser
   String dropdownValue = 'Grams';

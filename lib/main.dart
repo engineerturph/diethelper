@@ -1,6 +1,7 @@
 import 'package:diethelper/Data/animation_attr.dart';
 import 'package:diethelper/Data/foods_list.dart';
 import 'package:flutter/material.dart';
+import 'Data/food.dart';
 import 'Screens/main_screen.dart';
 import 'package:diethelper/Screens/meal_screen.dart';
 import 'constants.dart';
@@ -43,7 +44,9 @@ class MyApp extends StatelessWidget {
       initialRoute: MainScreen.id,
       routes: {
         MainScreen.id: (context) => MainScreen(),
-        MealScreen.id: (context) => MealScreen(),
+        MealScreen.id: (context) => MealScreen(
+              curMeal: Meals.noMeal,
+            ),
       },
     );
   }

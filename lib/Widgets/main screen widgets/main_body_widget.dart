@@ -43,8 +43,8 @@ class _MainBodyWidgetState extends State<MainBodyWidget> {
               shrinkWrap: true,
               children: [
                 context
-                            .read<FoodData>()
-                            .mealFoodsMap['breakfastFoods']
+                            .watch<FoodData>()
+                            .mealFoodsMap[Meals.Morning]
                             ?.isEmpty ??
                         false
                     ? MealBox(
@@ -52,43 +52,46 @@ class _MainBodyWidgetState extends State<MainBodyWidget> {
                         mealData: Meals.Morning,
                       )
                     : MealWithRecipe(
-                        mealValue: 'breakfastFoods',
+                        mealValue: Meals.Morning,
                         mealWidget: MealBox(
                           innerText: 'Breakfast',
                           mealData: Meals.Morning,
                         )),
-                context.read<FoodData>().mealFoodsMap['lunchFoods']?.isEmpty ??
+                context
+                            .watch<FoodData>()
+                            .mealFoodsMap[Meals.Afternoon]
+                            ?.isEmpty ??
                         false
                     ? MealBox(
                         innerText: 'Lunch',
                         mealData: Meals.Morning,
                       )
                     : MealWithRecipe(
-                        mealValue: 'lunchFoods',
+                        mealValue: Meals.Afternoon,
                         mealWidget: MealBox(
                           innerText: 'Lunch',
                           mealData: Meals.Morning,
                         )),
-                context.read<FoodData>().mealFoodsMap['dinnerFoods']?.isEmpty ??
+                context.watch<FoodData>().mealFoodsMap[Meals.Night]?.isEmpty ??
                         false
                     ? MealBox(
                         innerText: 'Dinner',
                         mealData: Meals.Morning,
                       )
                     : MealWithRecipe(
-                        mealValue: 'dinnerFoods',
+                        mealValue: Meals.Night,
                         mealWidget: MealBox(
                           innerText: 'Dinner',
                           mealData: Meals.Morning,
                         )),
-                context.read<FoodData>().mealFoodsMap['extraFoods']?.isEmpty ??
+                context.watch<FoodData>().mealFoodsMap[Meals.Extra]?.isEmpty ??
                         false
                     ? MealBox(
                         innerText: 'Extra',
                         mealData: Meals.Morning,
                       )
                     : MealWithRecipe(
-                        mealValue: 'extraFoods',
+                        mealValue: Meals.Extra,
                         mealWidget: MealBox(
                           innerText: 'Extra',
                           mealData: Meals.Morning,

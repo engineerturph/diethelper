@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:provider/provider.dart';
 import '../../Data/animation_attr.dart';
+import '../../Data/food.dart';
 import '../../Data/foods_list.dart';
 import '../../constants.dart';
 import 'recipe_box_main.dart';
 
 class MealWithRecipe extends StatefulWidget {
   MealWithRecipe({required this.mealWidget, required this.mealValue});
-  String mealValue;
+  Meals mealValue;
   Widget mealWidget;
 
   @override

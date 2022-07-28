@@ -8,8 +8,8 @@ import 'package:provider/provider.dart';
 import '../../Data/foods_list.dart';
 
 class MealBodyWidget extends StatefulWidget {
-  MealBodyWidget({this.curMeal});
-  Meals? curMeal;
+  MealBodyWidget({required this.curMeal});
+  Meals curMeal;
   @override
   State<MealBodyWidget> createState() => _MealBodyWidgetState();
 }
@@ -64,6 +64,7 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
                               itemBuilder: <Widget>(context, index) {
                                 return RecipeBox(
                                   index: index,
+                                  mealType: widget.curMeal,
                                 );
                               },
                               itemCount:

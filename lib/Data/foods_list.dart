@@ -3,10 +3,10 @@ import 'food.dart';
 
 class FoodData extends ChangeNotifier {
   var mealFoodsMap = {
-    'breakfastFoods': <Food>[],
-    'lunchFoods': <Food>[],
-    'dinnerFoods': <Food>[],
-    'extraFoods': <Food>[]
+    Meals.Morning: <Food>[],
+    Meals.Afternoon: <Food>[],
+    Meals.Night: <Food>[],
+    Meals.Extra: <Food>[]
   };
   List<Food> BreakFastFoods = [];
   List<Food> FoodsList = [
@@ -40,11 +40,31 @@ class FoodData extends ChangeNotifier {
     notifyListeners();
   }
 
-  addFoodToMeal(index) {
+  addFoodToMeal(index, Meals mealType) {
     if (FoodsList[index].meal != Meals.noMeal) {
       FoodsList[index].meal = Meals.noMeal;
-    } else {
-      FoodsList[index].meal = Meals.Extra;
+      mealFoodsMap[mealType]!.removeAt(mealFoodsMap[mealType]!.length - 1);
+      print('b');
+    } else if (mealType == Meals.Morning) {
+      FoodsList[index].meal = Meals.Morning;
+      mealFoodsMap[mealType]!.add(FoodsList[index]);
+      print(mealFoodsMap[mealType]);
+    } else if (mealType == Meals.Afternoon) {
+      FoodsList[index].meal = Meals.Afternoon;
+      mealFoodsMap[mealType]!.add(FoodsList[index]);
+    } else if (mealType == Meals.Night) {
+      FoodsList[index].meal = Meals.Night;
+      mealFoodsMap[mealType]!.add(FoodsList[index]);
+    } else if (mealType == Meals.Extra) {
+      FoodsList[index].meal = Meals.Night;
+      mealFoodsMap[mealType]!.add(FoodsList[index]);
+    }
+    notifyListeners();
+  }
+
+  resetFoods() {
+    for (var i = 0; i < FoodsList.length; i++) {
+      FoodsList[i].meal = Meals.noMeal;
     }
     notifyListeners();
   }

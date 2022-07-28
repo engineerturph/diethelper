@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Data/food.dart';
 import '../../Data/foods_list.dart';
 import '../../constants.dart';
 
 class RecipeBoxMain extends StatefulWidget {
   RecipeBoxMain({required this.index, required this.mealValue});
   int index;
-  String mealValue;
+  Meals mealValue;
   @override
   State<RecipeBoxMain> createState() => _RecipeBoxMainState();
 }
