@@ -35,6 +35,7 @@ class FoodData extends ChangeNotifier {
         meal: Meals.noMeal,
         recipeCode: 2)
   ];
+  List<Food> tempFoodArr = [];
   adRecipe(Food food) {
     FoodsList.add(food);
     notifyListeners();
@@ -43,29 +44,29 @@ class FoodData extends ChangeNotifier {
   addFoodToMeal(index, Meals mealType) {
     if (FoodsList[index].meal != Meals.noMeal) {
       FoodsList[index].meal = Meals.noMeal;
-      mealFoodsMap[mealType]!.removeAt(mealFoodsMap[mealType]!.length - 1);
-      print('b');
+      tempFoodArr.removeWhere((food) => food.meal == Meals.noMeal);
     } else if (mealType == Meals.Morning) {
       FoodsList[index].meal = Meals.Morning;
-      mealFoodsMap[mealType]!.add(FoodsList[index]);
-      print(mealFoodsMap[mealType]);
+      tempFoodArr.add(FoodsList[index]);
     } else if (mealType == Meals.Afternoon) {
       FoodsList[index].meal = Meals.Afternoon;
-      mealFoodsMap[mealType]!.add(FoodsList[index]);
+      tempFoodArr.add(FoodsList[index]);
     } else if (mealType == Meals.Night) {
       FoodsList[index].meal = Meals.Night;
-      mealFoodsMap[mealType]!.add(FoodsList[index]);
+      tempFoodArr.add(FoodsList[index]);
     } else if (mealType == Meals.Extra) {
       FoodsList[index].meal = Meals.Night;
-      mealFoodsMap[mealType]!.add(FoodsList[index]);
+      tempFoodArr.add(FoodsList[index]);
     }
     notifyListeners();
   }
 
-  resetFoods() {
+  saveFoods(Meals mealType) {
+    mealFoodsMap[mealType]!.addAll(tempFoodArr);
     for (var i = 0; i < FoodsList.length; i++) {
       FoodsList[i].meal = Meals.noMeal;
     }
+    tempFoodArr = [];
     notifyListeners();
   }
 }

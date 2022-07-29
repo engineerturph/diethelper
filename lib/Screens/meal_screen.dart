@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import "package:flutter_feather_icons/flutter_feather_icons.dart";
+import 'package:provider/provider.dart';
 import '../Data/food.dart';
+import '../Data/foods_list.dart';
 import '../Widgets/meal screen widgets/meal_body_widget.dart';
 
 class MealScreen extends StatefulWidget {
@@ -28,7 +30,20 @@ class _MealScreenState extends State<MealScreen> {
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
-        title: null,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: TextButton(
+              onPressed: () {
+                context.read<FoodData>().saveFoods(widget.curMeal);
+                Navigator.pop(context);
+              },
+              child: Text(
+                "SAVE",
+              ),
+            ),
+          ),
+        ],
       ),
       body: MealBodyWidget(curMeal: widget.curMeal),
       drawer: Drawer(
