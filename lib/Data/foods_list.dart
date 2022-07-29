@@ -35,6 +35,7 @@ class FoodData extends ChangeNotifier {
         meal: Meals.noMeal,
         recipeCode: 2)
   ];
+  List<Food> searchedFoods = [];
   int totalKcal = 0;
   int limitKcal = 2000;
   get totalLimitRatio {
@@ -60,6 +61,16 @@ class FoodData extends ChangeNotifier {
     }
   }
 
+  void searchFood(String value) {
+    searchedFoods = [];
+    List<Food> innerTempFoodArr = [];
+    innerTempFoodArr = FoodsList.where(
+            (food) => food.name.toLowerCase().contains(value.toLowerCase()))
+        .toList();
+    searchedFoods.addAll(innerTempFoodArr);
+    notifyListeners();
+  }
+
   List<Food> tempFoodArr = [];
   adRecipe(Food food) {
     FoodsList.add(food);
@@ -67,29 +78,29 @@ class FoodData extends ChangeNotifier {
   }
 
   addFoodToMeal(index, Meals mealType) {
-    if (FoodsList[index].meal != Meals.noMeal) {
-      FoodsList[index].meal = Meals.noMeal;
+    if (searchedFoods[index].meal != Meals.noMeal) {
+      searchedFoods[index].meal = Meals.noMeal;
       tempFoodArr.removeWhere((food) => food.meal == Meals.noMeal);
     } else if (mealType == Meals.Morning) {
-      FoodsList[index].meal = Meals.Morning;
-      tempFoodArr.add(FoodsList[index]);
+      searchedFoods[index].meal = Meals.Morning;
+      tempFoodArr.add(searchedFoods[index]);
     } else if (mealType == Meals.Afternoon) {
-      FoodsList[index].meal = Meals.Afternoon;
-      tempFoodArr.add(FoodsList[index]);
+      searchedFoods[index].meal = Meals.Afternoon;
+      tempFoodArr.add(searchedFoods[index]);
     } else if (mealType == Meals.Night) {
-      FoodsList[index].meal = Meals.Night;
-      tempFoodArr.add(FoodsList[index]);
+      searchedFoods[index].meal = Meals.Night;
+      tempFoodArr.add(searchedFoods[index]);
     } else if (mealType == Meals.Extra) {
-      FoodsList[index].meal = Meals.Night;
-      tempFoodArr.add(FoodsList[index]);
+      searchedFoods[index].meal = Meals.Night;
+      tempFoodArr.add(searchedFoods[index]);
     }
     notifyListeners();
   }
 
   saveFoods(Meals mealType) {
     mealFoodsMap[mealType]!.addAll(tempFoodArr);
-    for (var i = 0; i < FoodsList.length; i++) {
-      FoodsList[i].meal = Meals.noMeal;
+    for (var i = 0; i < mealFoodsMap[mealType]!.length; i++) {
+      mealFoodsMap[mealType]![i].meal = Meals.noMeal;
     }
     tempFoodArr = [];
     notifyListeners();

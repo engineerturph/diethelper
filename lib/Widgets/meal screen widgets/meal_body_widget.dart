@@ -57,6 +57,9 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
                             autofocus: true,
                             textAlign: TextAlign.center,
                             maxLines: 1,
+                            onChanged: (value) {
+                              context.read<FoodData>().searchFood(value);
+                            },
                           ),
                           Flexible(
                             fit: FlexFit.tight,
@@ -67,8 +70,10 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
                                   mealType: widget.curMeal,
                                 );
                               },
-                              itemCount:
-                                  context.watch<FoodData>().FoodsList.length,
+                              itemCount: context
+                                  .watch<FoodData>()
+                                  .searchedFoods
+                                  .length,
                             ),
                           )
                         ],

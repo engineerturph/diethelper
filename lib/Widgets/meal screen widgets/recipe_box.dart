@@ -16,11 +16,12 @@ class RecipeBox extends StatefulWidget {
 class _RecipeBoxState extends State<RecipeBox> {
   FoodData foodData = FoodData();
   get kcalNum {
-    return context.watch<FoodData>().FoodsList[widget.index].kcal100g;
+    return context.watch<FoodData>().searchedFoods[widget.index].kcal100g;
   }
 
   String? kcalType(kcalNo) {
-    if (kcalNo == context.watch<FoodData>().FoodsList[widget.index].kcal100g) {
+    if (kcalNo ==
+        context.watch<FoodData>().searchedFoods[widget.index].kcal100g) {
       return 'g';
     }
   }
@@ -45,7 +46,10 @@ class _RecipeBoxState extends State<RecipeBox> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      context.watch<FoodData>().FoodsList[widget.index].name,
+                      context
+                          .watch<FoodData>()
+                          .searchedFoods[widget.index]
+                          .name,
                       style: kMiddleTextStyle,
                     ),
                     Checkbox(
@@ -53,7 +57,7 @@ class _RecipeBoxState extends State<RecipeBox> {
                         checkColor: Colors.black,
                         value: context
                             .watch<FoodData>()
-                            .FoodsList[widget.index]
+                            .searchedFoods[widget.index]
                             .isAdded,
                         onChanged: (bool? newValue) {
                           context
@@ -68,13 +72,13 @@ class _RecipeBoxState extends State<RecipeBox> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '${context.watch<FoodData>().FoodsList[widget.index].kcal100g} kcal',
+                        '${context.watch<FoodData>().searchedFoods[widget.index].kcal100g} kcal',
                         style: kMiddleTextStyle.copyWith(color: Colors.blue),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 60.0),
                         child: Text(
-                          '100 ${kcalType(context.watch<FoodData>().FoodsList[widget.index].kcal100g)}',
+                          '100 ${kcalType(context.watch<FoodData>().searchedFoods[widget.index].kcal100g)}',
                           style: kMiddleTextStyle,
                         ),
                       ),
