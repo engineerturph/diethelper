@@ -15,7 +15,7 @@ Roadmap
 - Main page/ Show calories taken  ✅  
 - Main page/ Show calories taken at appbar in other pages  ✅  
 - Meal Page/ Adding recipes chosen to meal chosen  ✅  
-- Meal Page/ Searching recipes from search recipe bar  
+- Meal Page/ Searching recipes from search recipe bar  ✅  
 - Meal page/ Add added recipes inside meal page  ✅  
 - Recipe page/ Edit recipe attributes while adding  
 - Recipe page/ Edit your recipes  
