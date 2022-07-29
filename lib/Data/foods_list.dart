@@ -13,6 +13,7 @@ class FoodData extends ChangeNotifier {
     Food(
         name: 'Pizza',
         kcal100g: 344,
+        curKcal: 344,
         proteingr: 13,
         carbohydrategr: 66,
         fatgr: 21,
@@ -21,6 +22,7 @@ class FoodData extends ChangeNotifier {
     Food(
         name: 'Burger',
         kcal100g: 313,
+        curKcal: 313,
         proteingr: 21,
         fatgr: 19,
         carbohydrategr: 60,
@@ -29,6 +31,7 @@ class FoodData extends ChangeNotifier {
     Food(
         name: 'Donas',
         kcal100g: 310,
+        curKcal: 310,
         proteingr: 20,
         carbohydrategr: 60,
         fatgr: 20,
@@ -109,17 +112,35 @@ class FoodData extends ChangeNotifier {
   calculateKcal() {
     totalKcal = 0;
     for (var i = 0; i < mealFoodsMap[Meals.Morning]!.length; i++) {
-      totalKcal += mealFoodsMap[Meals.Morning]![i].kcal100g;
+      totalKcal += mealFoodsMap[Meals.Morning]![i].curKcal;
     }
     for (var i = 0; i < mealFoodsMap[Meals.Afternoon]!.length; i++) {
-      totalKcal += mealFoodsMap[Meals.Afternoon]![i].kcal100g;
+      totalKcal += mealFoodsMap[Meals.Afternoon]![i].curKcal;
     }
     for (var i = 0; i < mealFoodsMap[Meals.Night]!.length; i++) {
-      totalKcal += mealFoodsMap[Meals.Night]![i].kcal100g;
+      totalKcal += mealFoodsMap[Meals.Night]![i].curKcal;
     }
     for (var i = 0; i < mealFoodsMap[Meals.Extra]!.length; i++) {
-      totalKcal += mealFoodsMap[Meals.Extra]![i].kcal100g;
+      totalKcal += mealFoodsMap[Meals.Extra]![i].curKcal;
     }
+    notifyListeners();
+  }
+
+  calculateRecipeKcal(int index) {
+    int TextfieldValue = recipeTextFieldValue;
+    int kcal100g = searchedFoods[index].kcal100g;
+    if (searchedFoods[index].curUnit == Units.gram) {
+      searchedFoods[index].curKcal = (TextfieldValue / 100 * kcal100g).round();
+      searchedFoods[index].curNum = TextfieldValue;
+    }
+    notifyListeners();
+  }
+
+  //Animation datas in FoodData
+  //Recipe screen animation datas
+  int recipeTextFieldValue = 100;
+  void changeTextField(int value) {
+    recipeTextFieldValue = value;
     notifyListeners();
   }
 }

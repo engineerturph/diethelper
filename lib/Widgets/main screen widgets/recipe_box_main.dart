@@ -14,16 +14,6 @@ class RecipeBoxMain extends StatefulWidget {
 }
 
 class _RecipeBoxMainState extends State<RecipeBoxMain> {
-  String? kcalType(kcalNo) {
-    if (kcalNo ==
-        context
-            .watch<FoodData>()
-            .mealFoodsMap[widget.mealValue]![widget.index]
-            .kcal100g) {
-      return 'g';
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,11 +26,11 @@ class _RecipeBoxMainState extends State<RecipeBoxMain> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '100 ${kcalType(context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].kcal100g)} ${context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].name}',
+                      '${context.watch<FoodData>().searchedFoods[widget.index].curNum} ${context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].unitString} ${context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].name}',
                       style: kMiddleTextStyle,
                     ),
                     Text(
-                      '${context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].kcal100g} kcal',
+                      '${context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].curKcal} kcal',
                       style: kMiddleTextStyle.copyWith(color: Colors.blue),
                     )
                   ],

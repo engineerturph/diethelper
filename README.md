@@ -17,7 +17,7 @@ Roadmap
 - Meal Page/ Adding recipes chosen to meal chosen  ✅  
 - Meal Page/ Searching recipes from search recipe bar  ✅  
 - Meal page/ Add added recipes inside meal page  ✅  
-- Recipe page/ Edit recipe attributes while adding  
+- Recipe page/ Edit recipe attributes while adding  (added except changing unit type)  
 - Recipe page/ Edit your recipes  
 - Recipe page/ Delete recipes  
 - Add more jobs if needed  

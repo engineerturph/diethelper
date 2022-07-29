@@ -88,6 +88,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                               print(context.read<FoodData>().FoodsList);
                               context.read<FoodData>().adRecipe(Food(
                                     name: recipeName,
+                                    curKcal: kcalper100g,
                                     kcal100g: kcalper100g,
                                     proteingr: proteingr,
                                     fatgr: fatgr,

@@ -1,3 +1,4 @@
+import 'package:diethelper/Data/animation_attr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:diethelper/Data/foods_list.dart';
@@ -9,12 +10,18 @@ import '../constants.dart';
 class RecipeScreen extends StatefulWidget {
   RecipeScreen(this.index);
   int index;
-
   @override
   State<RecipeScreen> createState() => _RecipeScreenState();
 }
 
 class _RecipeScreenState extends State<RecipeScreen> {
+  void onPressedFunc() {
+    int TextfieldValue = context.read<FoodData>().recipeTextFieldValue;
+    int kcal100g =
+        context.read<FoodData>().searchedFoods[widget.index].kcal100g;
+    context.read<FoodData>().calculateRecipeKcal(widget.index);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +36,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    context.read<FoodData>().FoodsList[widget.index].name,
+                    context.watch<FoodData>().FoodsList[widget.index].name,
                     style: kMiddleTextStyle,
                   ),
                 ),
@@ -50,10 +57,21 @@ class _RecipeScreenState extends State<RecipeScreen> {
                       ),
                       Expanded(
                         child: TextFormField(
-                          initialValue: '100',
+                          initialValue: context
+                              .watch<FoodData>()
+                              .recipeTextFieldValue
+                              .toString(),
                           decoration: kTextFieldDecoration,
                           textAlign: TextAlign.center,
                           maxLines: 1,
+                          onChanged: (value) {
+                            if (value == '') {
+                              return;
+                            }
+                            context
+                                .read<FoodData>()
+                                .changeTextField(int.parse(value));
+                          },
                         ),
                       ),
                     ],
@@ -84,9 +102,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                   padding: const EdgeInsets.all(10.0),
                   child: TextButton(
                       style: kButtonStyle,
-                      onPressed: () {
-                        print('as');
-                      },
+                      onPressed: onPressedFunc,
                       child: Container(
                         width: double.infinity,
                         height: 50.0,
@@ -112,22 +128,22 @@ class _RecipeScreenState extends State<RecipeScreen> {
                         TileBoxRecipe(
                           header: 'Calories',
                           footer:
-                              '${context.read<FoodData>().FoodsList[widget.index].kcal100g}kcal',
+                              '${context.watch<FoodData>().FoodsList[widget.index].curKcal}kcal',
                         ),
                         TileBoxRecipe(
                           header: 'Fat',
                           footer:
-                              '${context.read<FoodData>().FoodsList[widget.index].fatgr}gr',
+                              '${context.watch<FoodData>().FoodsList[widget.index].fatgr}gr',
                         ),
                         TileBoxRecipe(
                           header: 'Carbohydrate',
                           footer:
-                              '${context.read<FoodData>().FoodsList[widget.index].carbohydrategr}gr',
+                              '${context.watch<FoodData>().FoodsList[widget.index].carbohydrategr}gr',
                         ),
                         TileBoxRecipe(
                           header: 'Protein',
                           footer:
-                              '${context.read<FoodData>().FoodsList[widget.index].fatgr}gr',
+                              '${context.watch<FoodData>().FoodsList[widget.index].fatgr}gr',
                         ),
                       ],
                     ),

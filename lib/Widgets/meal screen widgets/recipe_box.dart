@@ -15,16 +15,6 @@ class RecipeBox extends StatefulWidget {
 
 class _RecipeBoxState extends State<RecipeBox> {
   FoodData foodData = FoodData();
-  get kcalNum {
-    return context.watch<FoodData>().searchedFoods[widget.index].kcal100g;
-  }
-
-  String? kcalType(kcalNo) {
-    if (kcalNo ==
-        context.watch<FoodData>().searchedFoods[widget.index].kcal100g) {
-      return 'g';
-    }
-  }
 
   bool? isChecked = false;
   @override
@@ -72,13 +62,13 @@ class _RecipeBoxState extends State<RecipeBox> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '${context.watch<FoodData>().searchedFoods[widget.index].kcal100g} kcal',
+                        '${context.watch<FoodData>().searchedFoods[widget.index].curKcal} kcal',
                         style: kMiddleTextStyle.copyWith(color: Colors.blue),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 60.0),
                         child: Text(
-                          '100 ${kcalType(context.watch<FoodData>().searchedFoods[widget.index].kcal100g)}',
+                          '${context.watch<FoodData>().searchedFoods[widget.index].curNum} ${context.watch<FoodData>().searchedFoods[widget.index].unitString}',
                           style: kMiddleTextStyle,
                         ),
                       ),
