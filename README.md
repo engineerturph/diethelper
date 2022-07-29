@@ -12,8 +12,8 @@ Roadmap
 - Create recipes, eaten recipes provider.  ✅  
 - Main page/ Show added recipes in main page  ✅  
 - Main page/ Open and close added recipes bar  ✅  
-- Main page/ Show calories taken  
-- Main page/ Show calories taken at appbar in other pages  
+- Main page/ Show calories taken  ✅  
+- Main page/ Show calories taken at appbar in other pages  ✅  
 - Meal Page/ Adding recipes chosen to meal chosen  ✅  
 - Meal Page/ Searching recipes from search recipe bar  
 - Meal page/ Add added recipes inside meal page  ✅  

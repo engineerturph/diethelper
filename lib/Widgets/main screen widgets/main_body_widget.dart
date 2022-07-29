@@ -1,3 +1,5 @@
+import 'package:diethelper/Widgets/main%20screen%20widgets/show_calories_taken.dart';
+import 'package:diethelper/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../Data/food.dart';
@@ -22,21 +24,18 @@ class _MainBodyWidgetState extends State<MainBodyWidget> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              '1280/2000 kcal',
+                '${context.watch<FoodData>().totalKcal}/${context.watch<FoodData>().limitKcal} kcal',
+                style: kMiddleTextStyle),
+            Text(
+              'Remaining = ${context.watch<FoodData>().remainingKcal} kcal',
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  color: Colors.white,
-                ),
-                height: 30.0,
-                width: 280.0,
-                margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 40.0),
+              padding: const EdgeInsets.only(top: 10.0, bottom: 20.0),
+              child: ShowCaloriesTaken(
+                totalWidth: 280.0,
               ),
             ),
             ListView(

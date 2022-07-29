@@ -35,6 +35,31 @@ class FoodData extends ChangeNotifier {
         meal: Meals.noMeal,
         recipeCode: 2)
   ];
+  int totalKcal = 0;
+  int limitKcal = 2000;
+  get totalLimitRatio {
+    int ratio = (totalKcal / limitKcal * 10).round();
+    if (ratio == 1) {
+      return 0.15;
+    }
+    if (ratio > 10) {
+      ratio = 10;
+    }
+    return ratio / 10.0;
+  }
+
+  get remainingKcal {
+    return limitKcal - totalKcal;
+  }
+
+  get kcalTargetReached {
+    if (limitKcal - totalKcal > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   List<Food> tempFoodArr = [];
   adRecipe(Food food) {
     FoodsList.add(food);
@@ -67,6 +92,23 @@ class FoodData extends ChangeNotifier {
       FoodsList[i].meal = Meals.noMeal;
     }
     tempFoodArr = [];
+    notifyListeners();
+  }
+
+  calculateKcal() {
+    totalKcal = 0;
+    for (var i = 0; i < mealFoodsMap[Meals.Morning]!.length; i++) {
+      totalKcal += mealFoodsMap[Meals.Morning]![i].kcal100g;
+    }
+    for (var i = 0; i < mealFoodsMap[Meals.Afternoon]!.length; i++) {
+      totalKcal += mealFoodsMap[Meals.Afternoon]![i].kcal100g;
+    }
+    for (var i = 0; i < mealFoodsMap[Meals.Night]!.length; i++) {
+      totalKcal += mealFoodsMap[Meals.Night]![i].kcal100g;
+    }
+    for (var i = 0; i < mealFoodsMap[Meals.Extra]!.length; i++) {
+      totalKcal += mealFoodsMap[Meals.Extra]![i].kcal100g;
+    }
     notifyListeners();
   }
 }

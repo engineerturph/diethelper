@@ -1,3 +1,4 @@
+import 'package:diethelper/Widgets/main%20screen%20widgets/show_calories_taken.dart';
 import 'package:flutter/material.dart';
 import "package:flutter_feather_icons/flutter_feather_icons.dart";
 import 'package:provider/provider.dart';
@@ -32,10 +33,17 @@ class _MealScreenState extends State<MealScreen> {
         ),
         actions: [
           Padding(
+            padding: const EdgeInsets.only(right: 35.0, top: 25.0),
+            child: ShowCaloriesTaken(
+              totalWidth: 200.0,
+            ),
+          ),
+          Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: TextButton(
               onPressed: () {
                 context.read<FoodData>().saveFoods(widget.curMeal);
+                context.read<FoodData>().calculateKcal();
                 Navigator.pop(context);
               },
               child: Text(

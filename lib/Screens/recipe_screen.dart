@@ -93,7 +93,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                         color: kSecondaryColor,
                         child: Center(
                           child: Text(
-                            'ADD',
+                            'SAVE',
                             style: kMiddleTextStyle,
                           ),
                         ),
