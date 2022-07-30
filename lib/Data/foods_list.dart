@@ -101,11 +101,27 @@ class FoodData extends ChangeNotifier {
   }
 
   saveFoods(Meals mealType) {
-    mealFoodsMap[mealType]!.addAll(tempFoodArr);
-    for (var i = 0; i < mealFoodsMap[mealType]!.length; i++) {
-      mealFoodsMap[mealType]![i].meal = Meals.noMeal;
+    print(tempFoodArr);
+    for (var i = 0; i < tempFoodArr.length; i++) {
+      Food cloneFood = Food(
+        kcal100g: tempFoodArr[i].kcal100g,
+        name: tempFoodArr[i].name,
+        proteingr: tempFoodArr[i].proteingr,
+        fatgr: tempFoodArr[i].fatgr,
+        carbohydrategr: tempFoodArr[i].carbohydrategr,
+        curKcal: tempFoodArr[i].curKcal,
+        meal: tempFoodArr[i].meal,
+        recipeCode: tempFoodArr[i].recipeCode,
+      );
+      cloneFood.curNum = tempFoodArr[i].curNum;
+      cloneFood.curUnit = tempFoodArr[i].curUnit;
+      mealFoodsMap[mealType]!.add(cloneFood);
+    }
+    for (var i = 0; i < tempFoodArr.length; i++) {
+      tempFoodArr[i].meal = Meals.noMeal;
     }
     tempFoodArr = [];
+    print(mealFoodsMap[mealType]);
     notifyListeners();
   }
 
@@ -133,6 +149,16 @@ class FoodData extends ChangeNotifier {
       searchedFoods[index].curKcal = (TextfieldValue / 100 * kcal100g).round();
       searchedFoods[index].curNum = TextfieldValue;
     }
+    if (searchedFoods[index].curUnit == Units.plate) {
+      searchedFoods[index].curKcal =
+          (TextfieldValue / 100 * kcal100g * 120).round();
+      searchedFoods[index].curNum = TextfieldValue;
+    }
+    if (searchedFoods[index].curUnit == Units.portion) {
+      searchedFoods[index].curKcal =
+          (TextfieldValue / 100 * kcal100g * 200).round();
+      searchedFoods[index].curNum = TextfieldValue;
+    }
     notifyListeners();
   }
 
@@ -141,6 +167,23 @@ class FoodData extends ChangeNotifier {
   int recipeTextFieldValue = 100;
   void changeTextField(int value) {
     recipeTextFieldValue = value;
+    notifyListeners();
+  }
+
+  //Recipe type chooser
+  String dropdownValue = 'Grams';
+
+  void DropdownButtonFunction(String? newValue, int index) {
+    dropdownValue = newValue!;
+    if (newValue == 'Grams') {
+      searchedFoods[index].curUnit = Units.gram;
+    }
+    if (newValue == 'Portion(200g)') {
+      searchedFoods[index].curUnit = Units.portion;
+    }
+    if (newValue == 'Plate(120g)') {
+      searchedFoods[index].curUnit = Units.plate;
+    }
     notifyListeners();
   }
 }

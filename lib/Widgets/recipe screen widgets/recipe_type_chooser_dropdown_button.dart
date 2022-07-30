@@ -1,11 +1,12 @@
-import 'package:diethelper/Data/animation_attr.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Data/foods_list.dart';
 import '../../constants.dart';
 
 class RecipeTypeChooserDropdownButton extends StatefulWidget {
-  const RecipeTypeChooserDropdownButton({Key? key}) : super(key: key);
+  RecipeTypeChooserDropdownButton(this.index);
+  int index;
 
   @override
   State<RecipeTypeChooserDropdownButton> createState() =>
@@ -20,13 +21,15 @@ class _RecipeTypeChooserDropdownButtonState
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       alignment: Alignment.center,
-      value: context.watch<AnimationAttrData>().dropdownValue,
+      value: context.watch<FoodData>().dropdownValue,
       style: kMiddleTextStyle,
       underline: Container(
         height: 0,
       ),
-      onChanged: context.read<AnimationAttrData>().DropdownButtonFunction,
-      items: <String>['Grams', '1 Portion(200g)', '1 Plate']
+      onChanged: (value) {
+        context.read<FoodData>().DropdownButtonFunction(value, widget.index);
+      },
+      items: <String>['Grams', 'Portion(200g)', 'Plate(120g)']
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,

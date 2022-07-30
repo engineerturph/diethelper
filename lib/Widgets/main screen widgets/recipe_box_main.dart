@@ -26,7 +26,7 @@ class _RecipeBoxMainState extends State<RecipeBoxMain> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '${context.watch<FoodData>().searchedFoods[widget.index].curNum} ${context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].unitString} ${context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].name}',
+                      '${context.watch<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].curNum} ${context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].unitString} ${context.read<FoodData>().mealFoodsMap[widget.mealValue]![widget.index].name}',
                       style: kMiddleTextStyle,
                     ),
                     Text(

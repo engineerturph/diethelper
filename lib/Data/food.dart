@@ -1,6 +1,6 @@
 enum Meals { noMeal, Morning, Afternoon, Night, Extra }
 
-enum Units { gram, slice, portion }
+enum Units { gram, plate, portion }
 
 class Food {
   Food(
@@ -19,8 +19,8 @@ class Food {
   int proteingr;
   int carbohydrategr;
   int fatgr;
-  int curNum = 100;
-  Units curUnit = Units.gram;
+  int? curNum = 100;
+  Units? curUnit = Units.gram;
   int? recipeCode;
   get isAdded {
     if (meal == Meals.noMeal) {
@@ -42,8 +42,8 @@ class Food {
     if (curUnit == Units.gram) {
       return 'g';
     }
-    if (curUnit == Units.slice) {
-      return 'slice';
+    if (curUnit == Units.plate) {
+      return 'plate';
     }
     if (curUnit == Units.portion) {
       return 'portion';

@@ -1,4 +1,3 @@
-import 'package:diethelper/Data/animation_attr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:diethelper/Data/foods_list.dart';
@@ -16,9 +15,6 @@ class RecipeScreen extends StatefulWidget {
 
 class _RecipeScreenState extends State<RecipeScreen> {
   void onPressedFunc() {
-    int TextfieldValue = context.read<FoodData>().recipeTextFieldValue;
-    int kcal100g =
-        context.read<FoodData>().searchedFoods[widget.index].kcal100g;
     context.read<FoodData>().calculateRecipeKcal(widget.index);
   }
 
@@ -93,7 +89,8 @@ class _RecipeScreenState extends State<RecipeScreen> {
                             ),
                             height: 40.0,
                             child: Center(
-                                child: RecipeTypeChooserDropdownButton())),
+                                child: RecipeTypeChooserDropdownButton(
+                                    widget.index))),
                       ),
                     ],
                   ),

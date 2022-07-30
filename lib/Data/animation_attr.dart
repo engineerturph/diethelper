@@ -30,11 +30,4 @@ class AnimationAttrData extends ChangeNotifier {
     Meals.Night: <Widget>[],
     Meals.Extra: <Widget>[]
   };
-  //Add Recipe type chooser
-  String dropdownValue = 'Grams';
-
-  void DropdownButtonFunction(String? newValue) {
-    dropdownValue = newValue!;
-    notifyListeners();
-  }
 }
