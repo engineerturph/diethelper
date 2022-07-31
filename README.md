@@ -17,10 +17,9 @@ Roadmap
 - Meal Page/ Adding recipes chosen to meal chosen  ✅  
 - Meal Page/ Searching recipes from search recipe bar  ✅  
 - Meal page/ Add added recipes inside meal page  ✅  
-- Recipe page/ Edit recipe attributes while adding  (added except changing unit type)  
+- Recipe page/ Edit recipe attributes while adding  (added except changing unit type)  ✅  
 - Make new page that you can delete recipes you added  
-- Add more jobs if needed  
-
+- And project is over
 
 I will do later if necessary  
 Wanting all nutritional values of recipe in a different page than getting with a form  
