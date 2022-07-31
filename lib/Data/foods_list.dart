@@ -186,4 +186,31 @@ class FoodData extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  List<bool> deleteList = [];
+  List<int> deleteIndexList = [];
+  get deleteValues {
+    for (var i = 0; i < FoodsList.length; i++) {
+      deleteList.add(false);
+    }
+    return deleteList;
+  }
+
+  addToDelete(index) {
+    if (deleteList[index] == false) {
+      deleteList[index] = true;
+      deleteIndexList.add(index);
+    } else {
+      deleteList[index] = false;
+      deleteIndexList.remove(index);
+    }
+    print(deleteIndexList);
+    notifyListeners();
+  }
+
+  deleteFromList() {
+    for (var i = 0; i < deleteIndexList.length; i++) {
+      FoodsList.removeAt(deleteIndexList[i]);
+    }
+  }
 }

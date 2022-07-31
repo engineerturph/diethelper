@@ -1,6 +1,7 @@
 import 'package:diethelper/Screens/add_recipe_screen.dart';
 import 'package:diethelper/constants.dart';
 import '../../Data/food.dart';
+import 'add_recipe_button.dart';
 import 'recipe_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -89,38 +90,17 @@ class _MealBodyWidgetState extends State<MealBodyWidget> {
             ),
           ),
         ),
-        Container(
-          margin: EdgeInsets.all(20.0),
-          decoration: BoxDecoration(
-            color: kSecondaryColor,
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          width: 200.0,
-          height: 80.0,
-          child: TextButton(
-            style: kButtonStyle,
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AddRecipeScreen()));
-            },
-            child: Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: Text(
-                    'Add Recipe',
-                    style: kMiddleTextStyle,
-                  ),
-                ),
-                Icon(
-                  FeatherIcons.plus,
-                  color: Colors.white,
-                  size: 40.0,
-                ),
-              ],
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            AddRecipeButton(
+              addButton: false,
             ),
-          ),
-        )
+            AddRecipeButton(
+              addButton: true,
+            ),
+          ],
+        ),
       ],
     );
   }

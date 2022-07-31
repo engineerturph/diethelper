@@ -40,81 +40,79 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                     style: kMiddleTextStyle,
                   ),
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 10.0,
-                      horizontal: 20.0,
-                    ),
-                    child: Column(
-                      children: [
-                        AddRecipeTextField(
-                            onChanged: (value) {
-                              recipeName = value;
-                            },
-                            hintText: 'Recipe Name'),
-                        AddRecipeTextField(
-                            onChanged: (value) {
-                              kcalper100g = int.parse(value);
-                            },
-                            hintText: 'Kcal per 100g'),
-                        AddRecipeTextField(
-                            onChanged: (value) {
-                              carbgr = int.parse(value);
-                            },
-                            hintText: 'Carb gr'),
-                        AddRecipeTextField(
-                            onChanged: (value) {
-                              proteingr = int.parse(value);
-                            },
-                            hintText: 'Protein gr'),
-                        AddRecipeTextField(
-                            onChanged: (value) {
-                              fatgr = int.parse(value);
-                            },
-                            hintText: 'Fat gr'),
-                        AddPortionButton(),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 80.0),
-                          child: TextButton(
-                            onPressed: () {
-                              if (recipeName == '' ||
-                                  kcalper100g == -1 ||
-                                  proteingr == -1 ||
-                                  fatgr == -1 ||
-                                  carbgr == -1) {
-                                return;
-                              }
-                              print(context.read<FoodData>().FoodsList);
-                              context.read<FoodData>().adRecipe(Food(
-                                    name: recipeName,
-                                    curKcal: kcalper100g,
-                                    kcal100g: kcalper100g,
-                                    proteingr: proteingr,
-                                    fatgr: fatgr,
-                                    carbohydrategr: carbgr,
-                                    meal: Meals.noMeal,
-                                  ));
-                              Navigator.pop(context);
-                            },
-                            style: kButtonStyle,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  color: kSecondaryColor),
-                              width: double.infinity,
-                              height: 80.0,
-                              child: Center(
-                                child: Text(
-                                  'SAVE',
-                                  style: kBigTextStyle,
-                                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 10.0,
+                    horizontal: 20.0,
+                  ),
+                  child: Column(
+                    children: [
+                      AddRecipeTextField(
+                          onChanged: (value) {
+                            recipeName = value;
+                          },
+                          hintText: 'Recipe Name'),
+                      AddRecipeTextField(
+                          onChanged: (value) {
+                            kcalper100g = int.parse(value);
+                          },
+                          hintText: 'Kcal per 100g'),
+                      AddRecipeTextField(
+                          onChanged: (value) {
+                            carbgr = int.parse(value);
+                          },
+                          hintText: 'Carb gr'),
+                      AddRecipeTextField(
+                          onChanged: (value) {
+                            proteingr = int.parse(value);
+                          },
+                          hintText: 'Protein gr'),
+                      AddRecipeTextField(
+                          onChanged: (value) {
+                            fatgr = int.parse(value);
+                          },
+                          hintText: 'Fat gr'),
+                      AddPortionButton(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 80.0),
+                        child: TextButton(
+                          onPressed: () {
+                            if (recipeName == '' ||
+                                kcalper100g == -1 ||
+                                proteingr == -1 ||
+                                fatgr == -1 ||
+                                carbgr == -1) {
+                              return;
+                            }
+                            print(context.read<FoodData>().FoodsList);
+                            context.read<FoodData>().adRecipe(Food(
+                                  name: recipeName,
+                                  curKcal: kcalper100g,
+                                  kcal100g: kcalper100g,
+                                  proteingr: proteingr,
+                                  fatgr: fatgr,
+                                  carbohydrategr: carbgr,
+                                  meal: Meals.noMeal,
+                                ));
+                            Navigator.pop(context);
+                          },
+                          style: kButtonStyle,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: kSecondaryColor),
+                            width: double.infinity,
+                            height: 80.0,
+                            child: Center(
+                              child: Text(
+                                'SAVE',
+                                style: kBigTextStyle,
                               ),
                             ),
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ],
